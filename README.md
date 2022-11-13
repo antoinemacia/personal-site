@@ -27,7 +27,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 ### Compose
 
 ```bash
-npm blog
+npm run blog
 ```
 
 Follow the interactive prompt to generate a post with pre-filled front matter.
