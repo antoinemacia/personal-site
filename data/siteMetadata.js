@@ -1,8 +1,9 @@
 const siteMetadata = {
-  title: 'Not sure yet',
-  author: 'Antoine Macia',
-  headerTitle: '???????',
-  description: 'A blog created with Next.js and Tailwind.css',
+  title: 'Playground',
+  author: 'Antoine Macia Collie',
+  headerTitle: 'Antoine Macia Collie',
+  description:
+    'Welcome to my personal, yet publicly accessible, collection of experiences, experiments, learnings and some top of mind ramblings',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
@@ -27,7 +28,7 @@ const siteMetadata = {
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo, revue
     // Please add your .env file and modify it according to your selection
-    provider: 'buttondown',
+    provider: '',
   },
   comment: {
     // If you want to use an analytics provider you have to add it to the
