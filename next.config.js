@@ -72,6 +72,14 @@ module.exports = withContentlayer(
         },
       ]
     },
+    async rewrites() {
+      return [
+        {
+          source: '/xmas-2022',
+          destination: '/xmas-2022/index.html',
+        },
+      ]
+    },
     webpack: (config, { dev, isServer }) => {
       config.module.rules.push({
         test: /\.svg$/,
