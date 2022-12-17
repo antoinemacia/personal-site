@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
 
-const Model = dynamic(() => import('./Model'), { ssr: false })
+const Model = dynamic(() => import('@/components/three/Model'), { ssr: false })
 
 export default function Page() {
   return <Model />
