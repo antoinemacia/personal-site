@@ -85,6 +85,16 @@ module.exports = withContentlayer(
         test: /\.svg$/,
         use: ['@svgr/webpack'],
       })
+      config.module.rules.push({
+        test: /\.(glb|gltf)$/,
+        use: {
+          loader: 'file-loader',
+          // options: {
+          //   publicPath: "/_next/static/images",
+          //   outputPath: "static/images/",
+          // }
+        },
+      })
 
       if (!dev && !isServer) {
         // Replace React with Preact only in client production build
