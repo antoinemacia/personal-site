@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/no-namespace': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
