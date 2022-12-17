@@ -12,3 +12,9 @@ export const getStaticProps = async () => {
 export default function About({ author }: InferGetStaticPropsType<typeof getStaticProps>) {
   return <MDXLayoutRenderer layout={author.layout || DEFAULT_LAYOUT} content={author} />
 }
+
+import LayoutWrapper from '@/components/LayoutWrapper'
+
+About.getLayout = function getLayout(page) {
+  return <LayoutWrapper>{page}</LayoutWrapper>
+}

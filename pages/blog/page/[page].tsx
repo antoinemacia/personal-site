@@ -61,3 +61,9 @@ export default function PostPage({
     </>
   )
 }
+
+import LayoutWrapper from '@/components/LayoutWrapper'
+
+PostPage.getLayout = function getLayout(page) {
+  return <LayoutWrapper>{page}</LayoutWrapper>
+}

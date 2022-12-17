@@ -69,3 +69,8 @@ export default function Blog({
     </>
   )
 }
+import LayoutWrapper from '@/components/LayoutWrapper'
+
+Blog.getLayout = function getLayout(page) {
+  return <LayoutWrapper>{page}</LayoutWrapper>
+}

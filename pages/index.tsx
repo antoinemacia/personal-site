@@ -102,3 +102,9 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
     </>
   )
 }
+
+import LayoutWrapper from '@/components/LayoutWrapper'
+
+Home.getLayout = function getLayout(page) {
+  return <LayoutWrapper>{page}</LayoutWrapper>
+}

@@ -46,3 +46,9 @@ export default function Tags({ tags }: InferGetStaticPropsType<typeof getStaticP
     </>
   )
 }
+
+import LayoutWrapper from '@/components/LayoutWrapper'
+
+Tags.getLayout = function getLayout(page) {
+  return <LayoutWrapper>{page}</LayoutWrapper>
+}
