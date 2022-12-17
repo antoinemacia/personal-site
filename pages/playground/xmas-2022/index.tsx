@@ -36,9 +36,9 @@ export default function App() {
   return (
     <div className="align-center h-full">
       <model-viewer
-        // className="model-viewer"
+        className="model-viewer"
         src="/static/models/antoine.glb"
-        alt="A rock"
+        alt="XMAS BABY"
         camera-controls
         ar
         ar-modes="webxr"
@@ -50,8 +50,6 @@ export default function App() {
     </div>
   )
 }
-
-import Head from 'next/head'
 
 import LayoutWrapper from '@/components/LayoutWrapper'
 import Script from 'next/script'
