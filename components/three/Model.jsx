@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 const Model = () => (
   <div id="card" className={styles.body}>
     <model-viewer
-      src="/diffuse-textured-mesh-v1.glb"
+      src="/Astronaut.glb"
       ios-src="/diffuse-textured-mesh-v1.usdz"
       poster="/poster.webp"
       alt="A 3D model of an astronaut"
