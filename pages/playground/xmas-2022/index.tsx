@@ -34,11 +34,10 @@ export default function App() {
   }
 
   return (
-    <div className="align-center h-full">
+    <div className="">
       <model-viewer
         className="model-viewer"
         src="/static/models/antoine.glb"
-        alt="XMAS BABY"
         camera-controls
         ar
         ar-modes="webxr"
@@ -51,13 +50,18 @@ export default function App() {
   )
 }
 
+import Head from 'next/head'
+
 import LayoutWrapper from '@/components/LayoutWrapper'
 import Script from 'next/script'
 
 App.getLayout = function getLayout(page) {
   return (
     <LayoutWrapper>
-      <Script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js" />
+      <Script
+        type="module"
+        src="https://unpkg.com/@google/model-viewer@2.0.2/dist/model-viewer.min.js"
+      />
       {page}
     </LayoutWrapper>
   )
