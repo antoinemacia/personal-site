@@ -148,6 +148,7 @@ Procfile          text
 *.wbmp            binary
 *.webp            binary
 *.glb             binary
+*.usdz             binary
 
 # Audio
 *.kar             binary
