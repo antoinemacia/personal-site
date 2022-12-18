@@ -1,7 +1,7 @@
 import '@google/model-viewer'
 import styles from './styles.module.css'
 
-const ModelViewer = ({ urls }) => (
+const ModelViewer = ({ urls, children }) => (
   <div id="card" className={styles.card}>
     <model-viewer
       id="viewer"
@@ -12,12 +12,16 @@ const ModelViewer = ({ urls }) => (
       alt="A 3D model of an astronaut"
       camera-controls
       auto-rotate
+      rotation-per-second="0.5rad"
+      autoplay
       ar
       ar-modes="scene-viewer webxr quick-look"
     >
       <button slot="ar-button" className={styles.arButton}>
         View in your space
       </button>
+
+      {children}
     </model-viewer>
   </div>
 )

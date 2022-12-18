@@ -12,7 +12,6 @@ const ContentSecurityPolicy = `
   script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app unpkg.com;
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
-  media-src 'none';
   connect-src * blob:;
   font-src 'self';
   frame-src giscus.app
