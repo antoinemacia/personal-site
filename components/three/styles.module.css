@@ -1,7 +1,7 @@
 .card {
   margin: 0;
   padding: 0;
-  height: 80vh;
+  height: 50vh;
 }
 
 .progress-bar {
@@ -34,7 +34,7 @@
 }
 
 .arButton {
-  background-image: url(/ar_icon.png);
+  background-image: url(/xr-2022/ar_icon.png);
   background-repeat: no-repeat;
   background-size: 20px 20px;
   background-position: 12px 50%;
