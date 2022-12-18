@@ -2,8 +2,10 @@ import '@google/model-viewer'
 import styles from './styles.module.css'
 
 const ModelViewer = ({ urls }) => (
-  <div id="card" className={styles.body}>
+  <div id="card" className={styles.card}>
     <model-viewer
+      id="viewer"
+      class={styles.viewer}
       src={urls.glb}
       ios-src={urls.usdz}
       poster={urls.poster}
