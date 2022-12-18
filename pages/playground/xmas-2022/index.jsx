@@ -20,8 +20,8 @@ export default function Page() {
     <div role="button" onClick={playAudio} onKeyDown={playAudio} tabIndex={0}>
       <ModelViewer
         urls={{
-          glb: '/xmas-2022/antoine-text.glb',
-          usdz: '/xmas-2022/antoine-text.usdz',
+          glb: '/xmas-2022/antoine-nic-v1.glb',
+          usdz: '/xmas-2022/antoine-nic-v1.usdz',
           poster: '/xmas-2022/poster.webp',
         }}
       />
