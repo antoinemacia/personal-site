@@ -11,8 +11,8 @@ const ModelViewer = ({ urls, children }) => (
       poster={urls.poster}
       disable-pan
       camera-controls
-      // auto-rotate
-      // rotation-per-second="0.5rad"
+      auto-rotate
+      rotation-per-second="0.5rad"
       autoplay
       ar-button
       ar
