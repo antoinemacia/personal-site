@@ -9,7 +9,6 @@ const ModelViewer = ({ urls, children }) => (
       src={urls.glb}
       ios-src={urls.usdz}
       poster={urls.poster}
-      alt="A 3D model of an astronaut"
       disable-pan
       camera-controls
       auto-rotate

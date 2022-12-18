@@ -10,7 +10,7 @@ const siteMetadata = {
   siteRepo: 'https://github.com/antoinemacia/personal-site',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
-  socialBanner: '/static/images/twitter-card.png',
+  // socialBanner: '/static/images/twitter-card.png',
   email: 'antoine.macia83@gmail.com',
   github: 'https://github.com/antoinemacia',
   twitter: 'https://twitter.com/ant_uno',
