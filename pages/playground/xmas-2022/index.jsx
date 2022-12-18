@@ -21,7 +21,7 @@ export default function Page() {
       <ModelViewer
         urls={{
           glb: '/xmas-2022/antoine-text.glb',
-          usdz: '/xmas-2022/antoine-test.usdz',
+          usdz: '/xmas-2022/antoine-text.usdz',
           poster: '/xmas-2022/poster.webp',
         }}
       />
