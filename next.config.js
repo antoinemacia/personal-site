@@ -75,28 +75,18 @@ module.exports = withTM(
           },
         ]
       },
-      // async rewrites() {
-      //   return [
-      //     {
-      //       source: '/xmas-2022',
-      //       destination: '/xmas-2022/index.html',
-      //     },
-      //   ]
-      // },
+      async rewrites() {
+        return [
+          {
+            source: '/xmas-2022',
+            destination: '/xmas-2022/index.html',
+          },
+        ]
+      },
       webpack: (config, { dev, isServer }) => {
         config.module.rules.push({
           test: /\.svg$/,
           use: ['@svgr/webpack'],
-        })
-        config.module.rules.push({
-          test: /\.(glb|gltf)$/,
-          use: {
-            loader: 'file-loader',
-            // options: {
-            //   publicPath: "/_next/static/images",
-            //   outputPath: "static/images/",
-            // }
-          },
         })
 
         if (!dev && !isServer) {
