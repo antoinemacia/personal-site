@@ -14,13 +14,13 @@ const ModelViewer = ({ urls, children }) => (
       // auto-rotate
       // rotation-per-second="0.5rad"
       autoplay
-      ar-button
+      // ar-button
       ar
       ar-modes="scene-viewer webxr quick-look"
     >
-      {/* <button slot="ar-button" className={styles.arButton}>
+      <button slot="ar-button" className={styles.arButton}>
         View in your space
-      </button> */}
+      </button>
 
       {children}
     </model-viewer>
