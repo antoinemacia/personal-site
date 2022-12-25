@@ -1,9 +1,9 @@
 const siteMetadata = {
-  title: 'Playground',
+  title: 'Blog & playground',
   author: 'Antoine Macia Collie',
   headerTitle: 'Antoine Macia Collie',
-  description:
-    'Welcome to my personal, yet publicly accessible, collection of experiences, experiments, learnings and some top of mind ramblings',
+  // description:
+  //   'Musings on software, and how to build it',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',

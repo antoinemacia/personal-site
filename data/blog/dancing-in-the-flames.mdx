@@ -1,10 +1,62 @@
 ---
-title: Dancing in the flames
+title: Dancing in the flames (Part 1)
 date: '2022-12-27'
-tags: ['engineering', 'management']
-draft: true
-summary:
+tags: ['development', 'operations', 'eng management']
+draft: false
+summary: Accepting change as the status quo is key to developing reliable software products. Antifragile/Resilient software teams learn from incidents and get better from them, via a set of techniques that helps teams to react quickly and effectively to incidents all the while maintaining peak performance, and learn from these incidents as a mean to improve reliability.
 images: []
 ---
 
-Draft post which should not display
+Developing large and long-lived software products in a state of continuous change comes with its unavoidable set of surprises—one of their categories being a dense fauna of bugs and incidents. Depending on the nature of the application (e.g. a banking app vs. a cat classifier app, or B2B vs. B2C, project vs products), the team topology and leadership (technical vs. non-technical), and ultimately where the project/product sits on its market (trying to find a spot vs laying comfortably over 4 chairs), teams can choose to be more or less bug-averse/reliability focused, which will in turn dictate how they handle the unexpected.
+
+There are two approaches effective teams can better themselves with as part of making a platform more reliable
+
+- Become great at avoiding incidents (type checking, high coverage testing, QA phase)
+- Become great at dealing with incidents (observability, fast incident response, feature flagging, canary releases)
+
+While both approaches are important and should surely be taken in combination to move efficiently, I tempt to see the former (avoiding issues) to gather most of the team/business focus especially as team grows and in the product space; Intuitively this makes sense: bugs and incidents can significantly hurt trust in the product being reliable for its consumers, and painful experiences with products are extremely hard to convert back, so most product teams would want to avoid them at all cost.
+
+Im practice, the core trade-off of this approach is that it significantly slows teams down: 100% tests coverage can easily double development time; QA handoffs are notoriously slow even well oiled and produces overly fortified angles (the ones we know of). What’s probably most important and least intuitive, is that our lack of almighty omniscience still leaves a strong taste of distrust in teams in how prepared you can be for the unexpected. It disregards the nature of the beast, that the unexpected cannot ever be completely avoided - In fear of it, teams can do more QA, gated deployments and releases to secure more bases all of these eating more precious time in a competitive environment.
+
+### Accepting change as the status quo
+
+Many moons ago I had the chance to see a talk in Melbourne on the concept of “[Anti-fragility](<https://en.wikipedia.org/wiki/Antifragile_(book)>)” in the context of software engineering, which was an eye opener in the different ways you could choose to operate systems (most particularly in a web setting, notorious for change)
+
+The book this concept originated from, wrote by the economist [Nassim Nicholas Taleb](https://en.wikipedia.org/wiki/Nassim_Nicholas_Taleb) is introduced as followed
+
+> Some things benefit from shocks; they thrive and grow when exposed to volatility, [randomness](https://en.wikipedia.org/wiki/Randomness), disorder, and stressors and love adventure, [risk](https://en.wikipedia.org/wiki/Risk), and [uncertainty](https://en.wikipedia.org/wiki/Uncertainty).
+> Yet, in spite of the ubiquity of the phenomenon, there is no word for the exact opposite of fragile. Let us call it antifragile. Antifragility is beyond resilience or robustness. The resilient resists shocks and stays the same; the antifragile gets better
+
+The idea behind the concept is relatively simple: **what doesn’t kill you makes you stronger**; In the context of software
+
+- **Robust** systems favourise protection from incidents and reliability
+- **Resilient** systems adapts and recovers quickly from incidents
+- **Antifragile** systems learn from incidents and get better from it
+
+<br />
+
+![AntifragileSoftware.png](/static/images/dancing-in-the-flames/AntifragileSoftware.png)
+
+This was around the same time the concept of [Chaos engineering](https://en.wikipedia.org/wiki/Chaos_engineering) came along, spear headed and exemplified by [Netflix Chaos Monkey](https://github.com/netflix/chaosmonkey). This was a ground breaking approach for the field and for a company like Netflix where reliability is a lot more important than finding and developing market fit
+
+The concept of self-induced incidents caused by antifragile methods was so unique that it overshadowed the rest of what resilience and antifragility are all about. Many startups have attempted to replicate this methodology (most likely leading to costly AWS bills from self-induced DDoS attacks). However, the underlying principles of resilient and antifragile development can be applied much more broadly: by adapting and learning from real-world incidents, software can become increasingly more reliable in the face of what is actually likely to happen.
+
+Still, the more traditional approach of optimising for robustness and reliability, as well as increasing QA and other defensive mechanisms, is also suited to a relatively smaller subset of companies that can really afford and benefit from it, based on reasons I've stated earlier (e.g nature of the product requiring high reliability, maintaining market leadership though in a less unique way that Netflix etc)
+
+From experience working on different teams in small to mid companies for both project and product based work, and seeing and implementing different strategies and incentives, I believe there’s a sweet spot for the majority of software teams where through adapting to real world incidents and be prepared, **reliability improves gradually and continuously through adaptation while development velocity is peak**.
+
+### Performance and reliability through fire fighting
+
+Induced or not, incidents impacting customers will hurt the brand/business; If we’re going to learn from them to become more reliable, teams must **focus on creating a space where the impact of incidents is minimised;** What I call **“Fire fighting”** is a set of techniques that helps teams to react quickly and effectively to incidents. By providing an arsenal of incident-ready tools and fostering a culture where failure is part of the process of betterment, teams can eventually minimise the impact of issues all the while moving fast and efficiently by minimising pre-production steps;
+
+The foundation of an effective incident response is a **blame-free** environment. Although it can be difficult to create or foster, as culture changes slowly, it is nonetheless necessary to ensure that incidents are actually reported and properly resolved and learned from as a group.
+
+In the same vein, fire fighting is also a team effort: I would advise against “incident responders” or make it a sport only reserved to senior staff, and would advocate instead for incident response a common matter across the development team, regardless of seniority; the idea is really to normalise change as part of the process of evolution, and not the exception handled by specialists only. After a while, an incident ready team would have developed a tight set of processes for mitigation, resolution and learning that would feel as a normal as any other process
+
+To actually benefit from this strategy and not just waste the previously gained time doing pre-production defensive strategies, teams must **take the time to learn from these incidents**. They should retrospect on "what went wrong" and "how can such issues be prevented or mitigated in the future". This is pinnacle for the gradual progression of reliability
+
+As for implementing such changes in your team, I found guiding questions (and eventually metrics) are always a useful driver: instead of asking the team “_how can we minimise the amount of issues happening_”, we would instead be looking at “_how fast can an issue be resolved_” or “_how can we minimise the impact of issues?_”
+
+---
+
+Thank you for reading this far! It's a first, so pardon any repetitions. I can already tell this is getting lengthy, so I'd like to delve deeper into the operational and practical side of firefighting in Part 2, where I will write more about **the arsenal of incident-ready teams**, such as observability, feature flagging, and canary releases)
