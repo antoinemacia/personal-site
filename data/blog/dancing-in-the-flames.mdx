@@ -1,5 +1,5 @@
 ---
-title: Dancing in the flames
+title: Evolutionary fire-fighting
 date: '2022-12-27'
 tags: ['development', 'operations', 'eng management']
 draft: false
@@ -14,7 +14,7 @@ There are a couple of strategies software teams follow to as part of making a pl
 - Become great at avoiding incidents (high coverage unit testing, integration tests, QA phase)
 - Become great at dealing with incidents (observability, fast incident response, feature flagging, canary releases)
 
-Both approaches are important and must really be taken in combination to produce exhaustive reliability, I tempt to see the former (avoiding issues) to gather most of the team/business focus especially as team grows and in the product space; Intuitively this makes sense: bugs and incidents can significantly hurt trust in the product being reliable for its consumers, and painful experiences with products are extremely hard to convert back, so most product teams would want to avoid them at all cost.
+While both approaches are important and must really be taken in combination to produce exhaustive reliability, I tempt to see the former (avoiding issues) to gather most of the team/business focus especially as team grows and in the product space; Intuitively this makes sense: bugs and incidents can significantly hurt trust in the product being reliable for its consumers, and painful experiences with products are extremely hard to convert back, so most product teams would want to avoid them at all cost.
 
 Im practice, the core trade-off of focusing on the first approach is a slower pace of development: seeking 100% tests coverage can easily bump pre-production time; QA handoffs are notoriously slow even well oiled and produces overly fortified angles (the ones we know of). What’s probably most important and least intuitive, is that our lack of almighty omniscience still leaves a strong taste of distrust in teams in how prepared you can be for the unexpected. It disregards the nature of the beast, that the unexpected cannot ever be completely avoided - In fear of it, teams can do more QA, gated deployments and releases to secure more bases all of these eating more precious time in a competitive environment.
 
@@ -41,13 +41,20 @@ This was around the same time the concept of [Chaos engineering](https://en.wiki
 
 The concept of self-induced incidents caused by antifragile methods was so unique that it overshadowed the rest of what resilience and antifragility are all about. Many startups have attempted to replicate this methodology (most likely leading to costly AWS bills from self-induced DDoS attacks). However, the underlying principles of resilient and antifragile development can be applied much more broadly: by adapting and learning from real-world incidents, software can become increasingly more reliable in the face of what is actually likely to happen.
 
-### The art of dancing in the flames
+### The art of dancing with the flames
 
 Induced or not, incidents impacting customers will hurt the brand/business; If we’re going to learn from them and let defects happen in production to improve reliability, teams must **focus on creating a space and framework where the impact of production incidents is minimised;** By providing an arsenal of mitigation and resolution tools and fostering a culture where failure is part of the process of betterment, teams can eventually minimise the impact of issues, improve the software quality gradually all the while moving fast and efficiently by minimising pre-production steps;
 
-For the tad bit of history, the philosophy of quality assurance embedded in the production process directly is something that was popularised by [Toyota and their “Jidoka”,](https://global.toyota/en/company/vision-and-philosophy/production-system/) (part of the LEAN philosophy which I believe comes from Toyota as well) which aim to produce quality products while maintaining the pace (or in the assembly game, “[Takt time](https://en.wikipedia.org/wiki/Takt_time)”).
-
-In the context of software development, in-production reliability is about **observability, effective incident response and active retrospection from incidents**;
+<div class="rounded-lg bg-clip-padding p-8 bg-blue-700/[.09] border-4 border-blue-400">
+  <p>
+    For the tad bit of history, the philosophy of quality assurance embedded in the production
+    process directly is something that was popularised by [Toyota and their
+    “Jidoka”,](https://global.toyota/en/company/vision-and-philosophy/production-system/) (part of
+    the LEAN philosophy which I believe comes from Toyota as well) which aim to produce quality
+    products while maintaining the pace (or in the assembly game, “[Takt
+    time](https://en.wikipedia.org/wiki/Takt_time)”).
+  </p>
+</div>
 
 The foundation of an effective incident response is a **blame-free** environment. Although it can be difficult to create or foster, as culture changes slowly, it is absolutely necessary to ensure that incidents are actually reported and properly resolved and learned from as a group; In the same vein, fire fighting is also a team effort: I would actually advise against “incident responders” or make it a sport only reserved to senior staff, and would advocate instead for **incident response a common matter across the development team**, regardless of seniority; the idea is really to normalise change as part of the process of evolution, and not the exception handled by specialists only. After a while, an incident-ready team would have developed a tight set of processes for mitigation, resolution and learning that would feel as a normal as any other process
 
@@ -77,4 +84,4 @@ Further readings
 
 - [https://hbr.org/2011/04/strategies-for-learning-from-failure](https://hbr.org/2011/04/strategies-for-learning-from-failure)
 - [https://global.toyota/en/company/vision-and-philosophy/production-system/](https://global.toyota/en/company/vision-and-philosophy/production-system/)
-- [https://lethain.com/incident-response-programs-and-your-startup/](https://lethain.com/incident-response-programs-and-your-startup/)
+- [https://cove.army.gov.au/article/learning-our-mistakes-tolerating-failure-versus-allowing-failure](https://cove.army.gov.au/article/learning-our-mistakes-tolerating-failure-versus-allowing-failure)
