@@ -9,14 +9,16 @@ images: ['/static/images/dancing-in-the-flames/fire-fighting.jpeg']
 
 Developing large and long-lived software products in a state of continuous change comes with its unavoidable set of surprises—one of their categories being a dense fauna of bugs and incidents. Depending on the nature of the application (e.g. a banking app vs. a cat classifier app, or B2B vs. B2C, project vs products), the team topology and leadership (technical vs. non-technical), and ultimately where the project/product sits on its market (trying to find a spot vs laying comfortably over 4 chairs), teams can choose to be more or less bug-averse/reliability focused, which will in turn dictate how they handle the unexpected.
 
-There are a couple of strategies software teams follow to as part of making a platform more reliable
+There are a couple of strategies software teams can follow as part of making a platform more reliable
 
 - Become great at avoiding incidents (high coverage unit testing, integration tests, QA phase)
 - Become great at dealing with incidents (observability, fast incident response, feature flagging, canary releases)
 
-While both approaches are important and must really be taken in combination to produce exhaustive reliability, I tempt to see the former (avoiding issues) to gather most of the team/business focus especially as team grows and in the product space; Intuitively this makes sense: bugs and incidents can significantly hurt trust in the product being reliable for its consumers, and painful experiences with products are extremely hard to convert back, so most product teams would want to avoid them at all cost.
+While both approaches are important and taken in combination to produce exhaustive reliability, I tempt to see the former (avoiding issues) to gather most of the team/business energy, especially as team grows and in the product space; Intuitively this makes sense: bugs and incidents can significantly hurt trust in the product being reliable for its consumers, and painful experiences with products are extremely hard to convert back, so most product teams would want to avoid them at all cost.
 
-Im practice, the core trade-off of focusing on the first approach is a slower pace of development: seeking 100% tests coverage can easily bump pre-production time; QA handoffs are notoriously slow even well oiled and produces overly fortified angles (the ones we know of). What’s probably most important and least intuitive, is that our lack of almighty omniscience still leaves a strong taste of distrust in teams in how prepared you can be for the unexpected. It disregards the nature of the beast, that the unexpected cannot ever be completely avoided - In fear of it, teams can do more QA, gated deployments and releases to secure more bases all of these eating more precious time in a competitive environment.
+Im practice, the core trade-off of focusing on the first approach is a slower pace of development: seeking 100% tests coverage can easily bump pre-production time; QA handoffs are notoriously slow even well oiled and produces overly fortified angles (the ones we know of).
+
+What’s probably most important and least intuitive, is that our lack of almighty omniscience still leaves a strong taste of distrust in teams in how prepared you can be for the unexpected. It disregards the nature of the beast, that the unexpected cannot ever be completely avoided - In fear of it, teams can do more QA, gated deployments and releases to secure more bases all of these eating more precious time in a competitive environment.
 
 ## Accepting change as the status quo
 
@@ -56,7 +58,9 @@ Induced or not, incidents impacting customers will hurt the brand/business; If w
   </p>
 </div>
 
-The foundation of an effective incident response is a **blame-free** environment. Although it can be difficult to create or foster, as culture changes slowly, it is absolutely necessary to ensure that incidents are actually reported and properly resolved and learned from as a group; In the same vein, fire fighting is also a team effort: I would actually advise against “incident responders” or make it a sport only reserved to senior staff, and would advocate instead for **incident response a common matter across the development team**, regardless of seniority; the idea is really to normalise change as part of the process of evolution, and not the exception handled by specialists only. After a while, an incident-ready team would have developed a tight set of processes for mitigation, resolution and learning that would feel as a normal as any other process
+The foundation of an effective incident response is a **blame-free** environment. Although it can be difficult to create or foster, as culture changes slowly, it is absolutely necessary to ensure that incidents are actually reported and properly resolved and learned from as a group
+
+In the same vein, fire fighting is also a team effort: I would actually advise against “incident responders” or make it a sport only reserved to senior staff, and would advocate instead for **incident response a common matter across the development team**, regardless of seniority; the idea is really to normalise change as part of the process of evolution, and not the exception handled by specialists only. After a while, an incident-ready team would have developed a tight set of processes for mitigation, resolution and learning that would feel as a normal as any other process
 
 **Observability** ensures that the team is able to quickly and accurately diagnose and respond to incidents, it is essential to have visibility into what is happening in the system (there’s nothing worst that watching incidents unroll with no tools to investigate). This involves having the right logging and metrics tools, as well as monitoring tools to detect any incidents quickly. It is absolutely essential and fortunately there’s plenty of tooling on this front (the topic is relatively large so I hope to delve further into it in a different post)
 
@@ -66,7 +70,7 @@ Finally, to actually benefit from this reliability strategy and not just waste t
 
 As with pretty much everything, choosing a reliability strategy is highly contextual and should be thought through based on elements I’ve stated such as product/project type, market positioning, leadership and team topology, etc..
 
-Ultimately, a good reliability strategy is a combination of of pre, during and post production processes and practices. Automated tests for example are pinnacle to effective software development (and not only to safeguard from bugs!); what I advocate here is to carefully think through the cost of incidents as well as the cost of the time and energy put in these processes**,** and think a little counter intuitively on how reliaiblity could be produced
+Automated tests for example are pinnacle to effective software development (and not only to safeguard from bugs!); what I advocate here is to carefully think through the cost of incidents as well as the cost of the time and energy put in these processes, and think a little counter intuitively on how reliaiblity could be produced
 
 - Can the product/project afford the potential happenance of in production issues if the team was able to deliver more value faster? To what extend?
 - How much time to we spend avoiding issues to happen in production? What is the actual measure of incidents happening in production?
