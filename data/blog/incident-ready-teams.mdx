@@ -1,8 +1,87 @@
 ---
 title: The arsenal of incident ready teams
-date: '2023-01-06'
+date: '2023-01-18'
 tags: ['engineering', 'management', 'operations']
-draft: true
-summary:
+draft: false
+summary: To effectively test in production and improve your reliability while keeping you and your colleagues' anxiety levels to a minimum, you must trust that your team and the software you are maintaining stands on solid ground. This trust is built on tools and processes that allow you to quickly respond to the unexpected.
 images: []
 ---
+
+# The arsenal of incident ready teams
+
+![Fire fighting](/static/images/dancing-in-the-flames/fire-fighting.jpeg)
+
+To effectively test in production and improve your reliability while keeping you and your colleagues' anxiety levels to a minimum, you must trust that your team and the software you are maintaining stands on solid ground. This trust is built on tools and processes that allow you to quickly respond to the unexpected.
+
+Without understanding what is happening and lacking the tools to do so, engineers immediately go into mitigation mode, rolling back previous deployments and hoping for the best. In such teams, more often than not, the rollback takes time simply because rollback is a mitigation technique in itself and not much love has been dedicated to it. Finally, when this happens often enough to become common language among developers, the issue remains after rolling back. That is usually when everyone starts to run around like headless chickens, scrolling through git history, while the product team is now focusing on mitigating customers' frustration.
+
+It is a pretty nightmarish scenario and a little exaggerated on the edges, but it is definitely not far from the truth. If a team has never really put thought into handling incidents, and if the live software you run is large and has been around long enough to be called "legacy", I trust a variant of this would have happened to you.
+
+## Never again. (until next time)
+
+What I'm hoping to lay out here is an exhaustive list of tools and techniques that, once adopted, should ensure relatively smooth sailing through tempests, all the while making us better navigators and operators through the process (I do love metaphors).
+
+The different tools and processes can be split into four steps:
+
+- **Comprehension:** Root cause analysis, understanding what is happening, to whom, where, and on what scale.
+- **Mitigation:** Reducing the impact and managing stakeholders'/customers' expectations.
+- **Resolution:** Fixing the root cause.
+- **Retrospection:** Learning from our mistakes, avoiding them in the future, and reducing their impact.
+
+### Comprehension
+
+The first step in incident response is to understand what happened and what the impact is. Sometimes, the culprit is clear as day (e.g. new feature just released, feature flag flipped), and you can jump into mitigation right away; for other times, comprehension is done by **collecting observability data such as monitoring, logging, and runtime error reporting**. Having the right observability tools in place can take a bit of time starting from nothing, but can help you quickly identify any issues that have occurred, allowing you to move quickly to mitigate and resolve them.
+
+You can separate these tools into three categories, which I’ll order by most impactful/important for timely incident response:
+
+**Runtime error/Uptime reporting**
+
+It's hard to think you would run a production application without one of these plugged in, but they do what they say on the tin and let you know when something is obviously wrong and happening. Uptime doesn't tell you much besides telling you a server is down, and runtime errors reports usually point directly to the cause, that is, if the reporting has even occurred - you usually do not hear of an issue until the request has completed; if the request is dangling because a DB is unresponsive or the instance is running out of memory, you likely won't hear about it here but the next layer has got you sorted;
+
+**Monitoring**
+
+This section would be extremely dense if I were to get into the details of every different type of monitoring (APM, Telemetry, etc.), but in a nutshell your application monitoring is your core place of investigation, and should have all the clues to find out where the outage occurs and on what scale;
+
+You will likely still need to piece the puzzle together - an example would be to correlate a server high memory usage with a set of HTTP requests happening within the same time frame. Ensuring your services' health metrics and their respective events are visible and easy to correlate will save your team tons of time, especially when time is most scarce.
+
+**Logging**
+
+In the context of incident response, I found log analysis to be an after-the-fact comprehension/mitigation mechanism, rather than something you’d jump into while an incident is occurring;
+
+With structured logs and proper search capabilities, you’re able to easily know which customer may be affected and retrieve more contextual information. It is also be helpful in reverting an application state for specific users; it's something you’d wish to have in the very worst of cases, but from this point its diminishing returns.
+
+## Mitigation
+
+It is always worth **reducing the impact of an incident before attempting to solve it**; one of the most powerful tools for continuously integrated live applications is [feature flagging](https://www.atlassian.com/continuous-delivery/principles/feature-flags) which allows you to mitigate most incidents as soon as you understand what causes them. If feature flagging is not an option, you may need to get creative and consider trade-offs and partial recovery.
+
+For instance, you could **firewall an HTTP endpoint** to reduce the pressure on upstream dependencies or server vitals. If your “time to live update” is short enough and you confirmed the latest change was the culprit, a rollback may be the most suited mitigation. Before automatically jumping onto resolution, it is worth asking yourself: How can we reduce the damage on customer experience or infrastructure in the fastest way?
+
+## Resolution
+
+By then, you would have an understanding of the issue and mitigated it to give you the necessary time to properly patch it. The most important thing is **not to send another bug on top of the existing issue**. Not much to say here besides making sure you are doing this properly (e.g. writing tests, peer reviewing, etc.) and continuously letting the non-technical team know which step you are currently in, so that they can better manage customers' expectations.
+
+## Retrospection
+
+This is the "antifragile" component, the crucial learning step that goes into improving your reliability over time, adapting to previous incidents and organically bettering your tools and processes.
+
+If you're able to honestly retrospect on the issue, identify what went wrong in a **blame-free fashion** and measure how fast and well it was resolved, this leaves a lot of room for improvement, better preparation, and effectively become resilient to similar issues. It's important to put the emphasis on not pointing fingers, even if individuals were involved in the cause: this could highlight a flaw in the process that should be addressed as a team, and will also ensure team members are not downplaying or concealing events.
+
+This step doesn't have to be complicated - the most straightforward way to go by it is to do a **team incident report - meet with your team for 15 minutes after the incident is resolved, and write together the report;**
+
+The report itself would have the following information workshopped:
+
+- **Root cause** - What has happened and why
+- **Impact** - What interruption and damage did it cause, for how long
+- **Resolution** - What was done to mitigate and resolve it
+- **Actions** - What can be done going forward to correct/prevent such issues
+
+---
+
+That's it! As mentioned in [the previous article](/blog/dancing-with-the-flames), implementing an incident response scheme for a team and testing in production is an effective way to **identify the weaknesses in a system and processes**, which helps to **better address what is important** and thus increasing the application reliability.
+
+By improving reliability, confidence also increases which ultimately leads to improved velocity; The weaknesses and inefficiencies identified by this somewhat harsh method leads to efficiency prioritization - try this on a team for a year and observe the size and time of incident impact as well as the frequency of code deployment, and be amazed!
+
+## Further resources
+
+- [I test in prod](https://increment.com/testing/i-test-in-production/) - One of the better writings on testing in production, by **Charity Majors** cofounder and CTO of [honeycomb.io](http://honeycomb.io/) and coauthor of O’Reilly’s *Database Reliability Engineering*
+- [Correction of Error (COE) & Root cause analysis](https://wa.aws.amazon.com/wat.concept.coe.en.html)** processes from \*\***Amazon Well-Architected Framework\*\*\*\*
