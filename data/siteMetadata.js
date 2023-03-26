@@ -5,7 +5,7 @@ const siteMetadata = {
   description: '',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteUrl: 'https://antoinemc.dev',
   siteRepo: 'https://github.com/antoinemacia/personal-site',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
