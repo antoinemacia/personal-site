@@ -1,0 +1,105 @@
+---
+title: Practical AI Ethics course notes - Disinformation
+date: '2023-03-30'
+tags: ['ethics', 'ai']
+draft: false
+summary: Decided to share my notes on the excellent Fast.ai Practical AI Ethics course, as I believe it to be essential information for anyone, particularly for software engineers & data scientists, "people in the room" in the making & training of AI models, hopefully to lead to bette ethical considerations. Lesson 1 is on Disinformation, and oh my this is scary already...
+images: ['/static/images/ai-ethics/deepfake.png']
+---
+
+![/static/images/ai-ethics/deepfake.png](/static/images/ai-ethics/deepfake.png)
+
+Decided to share my notes on the excellent [Fast.ai Practical AI Ethics course](https://ethics.fast.ai), as I believe it to be essential information for anyone, particularly for software engineers & data scientists, "people in the room" in the making & training of AI models, hopefully to lead to bette ethical considerations. Lesson 1 is on Disinformation, and oh my this is scary already...
+
+# Lesson 1 - Disinformation
+
+[https://ethics.fast.ai/videos/?lesson=1](https://ethics.fast.ai/videos/?lesson=1)
+
+## What do you define as ethics?
+
+There's not one definition for ethics, but this one shared in the course I found to be most encompassing - extracted from [https://www.scu.edu/ethics/ethics-resources/ethical-decision-making/what-is-ethics/](https://www.scu.edu/ethics/ethics-resources/ethical-decision-making/what-is-ethics/)
+
+<div class="rounded-lg bg-clip-padding p-4 pl-6 pr-6 bg-blue-700/[.09] border-4 border-blue-400">
+  <p>
+    Ethics is two things.
+
+    First, ethics refers to well-founded standards of right and wrong that prescribe what humans ought to do, usually in terms of rights, obligations, benefits to society, fairness, or specific virtues. Ethics, for example, refers to those standards that impose the reasonable obligations to refrain from rape, stealing, murder, assault, slander, and fraud. Ethical standards also include those that enjoin virtues of honesty, compassion, and loyalty. And, ethical standards include standards relating to rights, such as the right to life, the right to freedom from injury, and the right to privacy. Such standards are adequate standards of ethics because they are supported by consistent and well-founded reasons.
+
+    Secondly, ethics refers to the study and development of one's ethical standards. As mentioned above, feelings, laws, and social norms can deviate from what is ethical. So it is necessary to constantly examine one's standards to ensure that they are reasonable and well-founded. Ethics also means, then, the continuous effort of studying our own moral beliefs and our moral conduct, and striving to ensure that we, and the institutions we help to shape, live up to standards that are reasonable and solidly-based.
+
+  </p>
+</div>
+
+## What is disinformation?
+
+![Orchestrated campaign, courtesy of [https://ethics.fast.ai/](https://ethics.fast.ai/)](/static/images/ai-ethics/orchestrated-campaign.png)
+Orchestrated campaign, courtesy of [https://ethics.fast.ai/](https://ethics.fast.ai/)
+
+**Harm of disinformation**
+
+- Mislead, especially propaganda by a government organization to a rival power or the media.
+- Discredit legitimate literature and resources
+- On a deeper level, **desintegrate democracy**
+
+**Types of disinformation**
+
+- Orchestrated campaigns of manipulation
+- Memes, media, leading to push a specific agenda
+- Can also be flooding with information to drown a listener, which would dampen truthful information
+  - Narrative laundering - building a story on top of real documents
+  - Mix faked documents in with large dump of real documents
+
+_Notes_
+
+I wonder about the “Narrative laundering” effect in XR as the technology gets more immersive, and how accrued immersion paired with misinformation/disinformation could produce even more conviction into false and potentially harmful narratives
+
+## How tech platforms incentivize & promote disinformation?
+
+- What is shared is not about credibility but rather emotive and political preference (**the truth has no reach**)
+- Social media platforms, by design, tilt users away from considering accuracy
+  - Encourage users to rapidly scroll & spontaneously engage
+  - Immeditate quantified feedback (# of likes)
+  - Producing addiciton is a platform goal, and the content to do such often leans outside of boring truth
+- Tech fundamentals flaws towards disinformation
+  - Fundamental business model is around manipulating people’s behaviour & monopolising time
+  - Incentives usually focus on short term metrics
+  - Feedback loops can occur when your model is controlling the next round of data you get. The data that is returned quickly becomes flawed by the software itself
+- How much of algorithm vs the platform?
+  - Youtube
+    - \***\*[All of YouTube, Not Just the Algorithm, is a Far-Right Propaganda Machine](https://ffwd.medium.com/all-of-youtube-not-just-the-algorithm-is-a-far-right-propaganda-machine-29b07b12430)\*\***
+
+_Notes_
+
+Youtube: Can relate to this heavily with my experience of youtube which I spend a lot of time on;
+the large majority of the recommendation my partner and I get are really one sided, and not in correlation with the content we usually watch?
+
+## DeepFakes in the wild
+
+GAN Generated profiles - [thispersondoesnotexist.com](http://thispersondoesnotexist.com)
+
+![/static/images/ai-ehtics/military-budget.png](/static/images/ai-ethics/military-budget.png)
+
+More than a million pro repeal net neutrality comment were likely faked [https://hackernoon.com/more-than-a-million-pro-repeal-net-neutrality-comments-were-likely-faked-e9f0e3ed36a6](https://hackernoon.com/more-than-a-million-pro-repeal-net-neutrality-comments-were-likely-faked-e9f0e3ed36a6) (
+
+![AI Generated comments on military budgetting in the US ](/static/images/ai-ethics/bots.png)
+
+AI Generated comments on military budgetting in the US
+
+> We have the technology to totally fill Twitter, email and the web up with reasonable sounding, context appropriate prose, which would drown out all other speech and be impossible to filter
+>
+> Jeremy Howard - [Fast.ai](http://Fast.ai) co-founder
+
+### How do we circumvent the disinformation bias
+
+- Personal:
+  - Digital literacy course: [https://checkpleasecc.notion.site/checkpleasecc/Check-Please-Starter-Course-ae34d043575e42828dc2964437ea4eed](https://www.notion.so/ae34d043575e42828dc2964437ea4eed)
+  - Pracrtice good social media habits
+- Global:
+  - Limiting who can use a deepfake tool
+  - Make it easier to detect (watermarks)
+  - Discouraging malicious use (policy making)
+  - Treat disinformation as a cybersecurity problem
+
+_Notes_
+
+- “Treat disinformation as a cybersecurity problem” sounds like the right way to go conceptually, but probably even more than with traditional cyber security challenges, the fight is endless in a sense that new malware are programmed to avoid exisitng securities; We can only assume that AI models would be trained to confuse whatever verification tools are out there
