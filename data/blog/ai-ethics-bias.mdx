@@ -1,0 +1,96 @@
+---
+title: Practical AI Ethics course notes - Bias
+date: '2023-04-17'
+tags: ['ethics', 'ai']
+draft: false
+summary: Second lesson's notes on the excellent Fast.ai Practical AI Ethics course, this one treating on Algorithmic "fairness" & biases , what are they and discussions on how they can better be prevented
+images: ['/static/images/ai-ethics/bias.jpeg']
+---
+
+![/static/images/ai-ethics/bias.jpeg](/static/images/ai-ethics/bias.jpeg)
+
+# Lesson 2 - Bias & Fairness
+
+[https://ethics.fast.ai/videos/?lesson=2](https://ethics.fast.ai/videos/?lesson=2)
+
+## Harms of Bias
+
+Innacurate predictions, which depending of the context they are used can be extremely harmful
+
+- Example: Crime prediciton algorithm used in US that had 45% of false positive predicitons for black americans (vs 20% of white americans)
+
+## Types of biases
+
+### Historical bias
+
+> **Historical bias** arises when there is a misalignment between world as it is and the values or objectives to be encoded and propagated in a model. It is a normative concern with the state of the world, and exists even given perfect sampling and feature selection.
+
+Suresh et. al. 2019
+
+>
+
+Historical bias arises when the data used to train an AI system no longer accurately reflects the current reality
+
+**Cases in the wild**
+
+- While the ‘gender pay gap’ is still a problem now, historically, the financial inequality faced by women was even worse.
+
+### Representation Bias
+
+> **Representation bias** arises while defining and sampling a development population. It occurs when the development population under-represents, and subsequently causes worse performance, for some part of the final population.
+
+Suresh et. al. 2019
+
+>
+
+**Cases in the wild**
+
+- Amazon reportedly scraps internal AI recruiting tool that was biased against women
+- Facebook would exlude older workers from jobs ads
+
+### Evaluation Bias
+
+> **Evaluation bias** occurs during model iteration and evaluation, when the testing or external benchmark populations do not equally represent the various parts of the final population. Evaluation bias can also arise from the use of performance metrics that are not granular or comprehensive enough.
+
+Suresh et. al. 2019
+
+>
+
+**Case in the wild**
+
+- 2/3 of ImageNet images (largest dataset of image in 2017) are from the West
+
+### Measurement Bias
+
+> **Measurement bias** arises when choosing and measuring the particular features and labels of interest. Features considered to be relevant to the outcome are chosen, but these can be incomplete or contain group- or input-dependent noise. In many cases, the choice of a single label to create a classification task may be an oversimplification that more accurately measures the true outcome of interest for certain groups.
+
+Suresh et. al. 2019
+
+>
+
+**Case in the wild**
+
+- Police county using crime rate in suburb to predict future crime, doing oversimplification that more accurately measures the true outcome of interest for certain groups
+
+## Fundamental differences of algorithms and human decision towards bias
+
+- People are more likely to assume algorithims are objective and error free
+- Algorithms are more likely to be implemented with no appeals process in place
+- Algorithms are often used at scale
+- Algorithms are cheap
+
+## How do we go about addressing biases
+
+- Gather more appropriate data
+- Question an AI creation and implementation throroughly (incorporate ethics into conception)
+  - What bias in the data we know of?
+  - What are the error rates per sub-groups?
+  - What is the accuracy of a simple rule-based alternative?
+- Adjust the selection criteria for the disadvantaged group
+- Train the AI system to incorporate fairness into its decisions
+
+## Further resources/research
+
+- [Historical bias in AI systems](https://humanrights.gov.au/about/news/media-releases/infographic-historical-bias-ai-systems)
+- [The problem with biased data](https://harinisuresh.medium.com/the-problem-with-biased-data-5700005e514c)
+- [A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle](https://arxiv.org/pdf/1901.10002.pdf)
