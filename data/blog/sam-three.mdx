@@ -1,0 +1,53 @@
+---
+title: Playing with Segment Anything
+date: '2023-01-18'
+tags: ['three.js', 'ai', 'machine-learning', 'segmentation']
+draft: false
+summary: I've been doing plenty of R&D and simply toying around of recent with various ML models (computer vision & language models for the most) but have been particularly fascinated in [Segment Anything (SAM)](https://segment-anything.com/) capabilities, and attempted to bring its magic into 3D through THREE.js
+images: ['/static/images/sam-three/sam.jpeg']
+---
+
+I've been doing plenty of R&D and simply toying of recent with various models (computer vision & language models for the most)
+but have been particularly fascinated in [Segment Anything (SAM)](https://segment-anything.com/) capabilities, and attempted to bring its magic into 3D
+
+## SAM?
+
+[Segment Anything (SAM)](https://segment-anything.com/) is a promptable segmentation system with zero-shot generalization to unfamiliar objects and images, without the need for additional training.
+
+Using a text prompt or cursor point, it can segment an object within an image and produce a mask of the different predictions.
+
+![/static/images/sam-three/masks2.jpg](/static/images/sam-three/masks2.jpg)
+
+SAM is a sharp tool that is focused on doing one thing (segmentation) extremely well; It does not keep a record of the labels of identified objects as natural language to reduce the model total payload, but instead
+rely on the high interoperability of the masks outputted which can be relatively easily composed with other computer vision programs and workflows.
+
+Segmentation in itself is in my humble opinion the holy grail of Computer Vision capabilities and acts as an angular building block for most automation we can imagine in our wildest SF dreams: as this effectively focuses
+on the ability to understand the space; the more performant and efficient such models are, the closer we are getting from ground breaking technlogical changes such as automated medical anomaly detection, self driving cars, and dragon ball Z chi-reading devices.
+
+## The experiment
+
+Most of the projects I've seen pairing SAM with 3D are focusing on the generation of 3D mesh from segmented 2D image; From developing extensively in the 3D space @ PHORIA, it made sense to give a shot at segmentation in a 3D scene
+
+The experiment works as follow
+
+- A 2D pixel coordinates (currently from pointer) are sent to the processing API along with a 2D render of the scene
+- SAM creates masks of the pointed object
+- Optimisation (edge extraction) using OpenCV is applied to the mask to reduce the amount of points to be rendered
+- The 2D mask projected back into 3D space and rendered as a bounding box
+
+![/static/images/sam-three/pass.png](/static/images/sam-three/pass.png)
+
+## Results
+
+The results are concluent but relatively limited
+
+- Does a great job on relatively flat surfaces, and suprisingly good on curved objects if the camera perspective is right!
+- Since we're using a single perspective, parts of the segmented object are bounded to be missing or misrepresented. To improve accuracy, we would need to take multiple renders of the scene perspectives from different angles
+  and then combine the masks to get a more accurate points representation (wether in processing using a virtual 3D grid, or client side with an offscreen canvas).
+- A common limitation of computer vision models, but quiet slow on CPU (most of the time is spent on segmentation/identification)
+
+![/static/images/sam-three/demo.png](/static/images/sam-three/demo.png)
+
+## That's a wrap!
+
+Was a fun little experiment with lots of potential improvements, you can check out the source code [here](https://github.com/antoinemacia/segment-anything-3D-scene)
