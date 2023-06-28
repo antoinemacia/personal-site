@@ -5,6 +5,7 @@ tags: ['three.js', 'ai', 'machine-learning', 'segmentation']
 draft: false
 summary: I've been doing plenty of R&D and simply toying around of recent with various ML models (computer vision & language models for the most) but have been particularly fascinated in Segment Anything (SAM) capabilities, and attempted to bring its magic into 3D through THREE.js
 images: ['/static/images/sam-three/sam.jpeg']
+layout: PostSimple
 ---
 
 I've been doing plenty of R&D and simply toying of recent with various models (computer vision & language models for the most)
@@ -36,6 +37,63 @@ The experiment works as follow
 - SAM creates masks of the pointed object
 - Optimisation (edge extraction) using OpenCV is applied to the mask to reduce the amount of points to be rendered
 - The 2D mask projected back into 3D space and rendered as a bounding box
+
+## Implementation tid bits
+
+Upon the mask being produced by SAM provided a pixel coordinate, OpenCV makes it relatively easy to extract edges of the mask (which we'll use to make the raycasting efficient)
+
+The implementation for the edge extraction looks like this
+
+```python
+def extract_edges(self, image: np.ndarray) -> np.ndarray:
+    im = Image.fromarray(image)
+    im.save(temp_folder("mask.png"))
+    img_data = cv2.imread(temp_folder("mask.png"))
+    img_data = img_data > 128
+
+    # Extract edges from mask
+    img_data = np.asarray(img_data[:, :, 0], dtype=np.double)
+    gx, gy = np.gradient(img_data)
+    temp_edge = gy * gy + gx * gx
+    temp_edge[temp_edge != 0.0] = 255.0
+    temp_edge = np.asarray(temp_edge, dtype=np.uint8)
+    cv2.imwrite(temp_folder("mask_edge.png"), temp_edge)
+
+    # Transform mask edge to pixel coordinates
+    img_data = cv2.imread(temp_folder("mask_edge.png"))
+    img_data = cv2.cvtColor(img_data, cv2.COLOR_BGR2GRAY)
+    img = img_data.astype(np.uint8)
+    coord = cv2.findNonZero(img)
+    coord = np.squeeze(coord)
+
+    return coord
+```
+
+Once the pixels array is sent back to the client, we iterate through each pixels and project them back into 3D space (one tricky bit was to ensure you're including the pixel ratio of your screen in the screen space calc)
+
+```javascript
+private pixelToWorldPosition(pixelCoordinate: [number, number]): THREE.Vector3 {
+  const vec = new THREE.Vector3();
+  const pos = new THREE.Vector3();
+  const pixelRatio = window.devicePixelRatio;
+
+  vec.set(
+    ((pixelCoordinate[0] / pixelRatio) / this.sceneEl.clientWidth) * 2 - 1,
+    -((pixelCoordinate[1] / pixelRatio) / this.sceneEl.clientHeight) * 2 + 1,
+    0.5
+  )
+
+  this.raycaster.setFromCamera(vec, this.camera);
+
+  var intersects = this.raycaster.intersectObjects(this.scene.children, true)
+
+  if(intersects.length > 0) {
+    return intersects[0].point
+  }
+
+  return pos
+}
+```
 
 ## Results
 
