@@ -9,6 +9,7 @@ import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { CoreContent } from '@/lib/utils/contentlayer'
 import { ReactNode } from 'react'
 import type { Blog } from 'contentlayer/generated'
+import { BlogNewsletterForm } from '@/components/NewsletterForm'
 
 interface Props {
   content: CoreContent<Blog>

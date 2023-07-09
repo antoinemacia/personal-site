@@ -37,6 +37,9 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
   return (
     <div>
       <div className="pb-1 text-lg font-semibold text-gray-800 dark:text-gray-100">{title}</div>
+      <div className="pb-6 prose text-gray-500 max-w-none dark:text-gray-400">
+        Get the latest posts delivered right to your inbox
+      </div>
       <form className="flex flex-col sm:flex-row" onSubmit={subscribe}>
         <div>
           <label className="sr-only" htmlFor="email-input">
@@ -62,7 +65,7 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
             type="submit"
             disabled={subscribed}
           >
-            {subscribed ? 'Thank you!' : 'Sign up'}
+            {subscribed ? 'Thank you!' : 'Subscribe'}
           </button>
         </div>
       </form>
@@ -77,7 +80,7 @@ export default NewsletterForm
 
 export const BlogNewsletterForm = ({ title }) => (
   <div className="flex items-center justify-center">
-    <div className="bg-gray-100 p-6 dark:bg-gray-800 sm:px-14 sm:py-8">
+    <div className="p-14 sm:px-14 sm:py-8">
       <NewsletterForm title={title} />
     </div>
   </div>
